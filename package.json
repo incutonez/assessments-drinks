@@ -1,5 +1,5 @@
 {
-  "name": "@incutonez/assessments-root-beers",
+  "name": "@incutonez/assessments-drinks",
   "version": "1.0.0",
   "description": "Example micro application workspace",
   "main": "index.js",

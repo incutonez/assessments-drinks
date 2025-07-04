@@ -1,40 +1,32 @@
 ﻿import { Injectable } from "@nestjs/common";
-import { DrinkModel, IDrinkModelCreate } from "@/db/models/DrinkModel";
-import { PictureModel } from "@/db/models/PictureModel";
-import { ReviewModel } from "@/db/models/ReviewModel";
+import { DrinkModel, IDrinkModel, IDrinkModelCreate } from "@/db/models/DrinkModel";
+import { PicturesMapper } from "@/drinks/pictures.mapper";
+import { ReviewsMapper } from "@/drinks/reviews.mapper";
 import { DrinksViewModel, IDrinksViewModel } from "@/viewModels/drinks.viewmodel";
-import { IPicturesViewModel } from "@/viewModels/pictures.viewmodel";
-import { IReviewsViewModel } from "@/viewModels/reviews.viewmodel";
 
 @Injectable()
 export class DrinksMapper {
-	entityToViewModel({ name, description, pictures = [], reviews = [] }: DrinkModel): IDrinksViewModel {
-		return {
-			name,
-			description,
-			pictures: pictures.map((picture) => this.entityPictureToViewModel(picture)),
-			reviews: reviews.map((review) => this.entityReviewToViewModel(review)),
-		};
+	constructor(private readonly reviewsMapper: ReviewsMapper, private readonly picturesMapper: PicturesMapper) {
 	}
 
-	entityReviewToViewModel({ user_name, description, rating }: ReviewModel): IReviewsViewModel {
+	entityToViewModel({ id, name, description }: DrinkModel): IDrinksViewModel {
 		return {
-			description,
-			rating,
-			userName: user_name,
-		};
-	}
-
-	entityPictureToViewModel({ name, mimetype, path }: PictureModel): IPicturesViewModel {
-		return {
+			id,
 			name,
-			mimetype,
-			path,
+			description,
 		};
 	}
 
 	viewModelCreateToEntity({ name, description }: DrinksViewModel): IDrinkModelCreate {
 		return {
+			name,
+			description,
+		};
+	}
+
+	viewModelToEntity({ id, name, description }: DrinksViewModel): IDrinkModel {
+		return {
+			id: id!,
 			name,
 			description,
 		};

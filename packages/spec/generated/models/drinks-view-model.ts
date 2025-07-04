@@ -28,6 +28,12 @@ import type { ReviewsViewModel } from './reviews-view-model';
 export interface DrinksViewModel {
     /**
      * 
+     * @type {number}
+     * @memberof DrinksViewModel
+     */
+    'id'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof DrinksViewModel
      */
@@ -43,12 +49,12 @@ export interface DrinksViewModel {
      * @type {Array<ReviewsViewModel>}
      * @memberof DrinksViewModel
      */
-    'reviews': Array<ReviewsViewModel>;
+    'reviews'?: Array<ReviewsViewModel>;
     /**
      * 
      * @type {Array<PicturesViewModel>}
      * @memberof DrinksViewModel
      */
-    'pictures': Array<PicturesViewModel>;
+    'pictures'?: Array<PicturesViewModel>;
 }
 

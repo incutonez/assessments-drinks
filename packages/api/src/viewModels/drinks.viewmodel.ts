@@ -6,13 +6,15 @@ import { ReviewsViewModel } from "@/viewModels/reviews.viewmodel";
 export type IDrinksViewModel = ModelInterface<DrinksViewModel>;
 
 export class DrinksViewModel {
+	id?: number;
+
 	declare name: string;
 
 	declare description: string;
 
-	declare reviews: ReviewsViewModel[];
+	reviews?: ReviewsViewModel[];
 
-	declare pictures: PicturesViewModel[];
+	pictures?: PicturesViewModel[];
 }
 
 export class DrinksListViewModel extends GetResponseModel<DrinksViewModel>(DrinksViewModel) {

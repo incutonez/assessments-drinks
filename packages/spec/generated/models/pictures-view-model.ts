@@ -22,6 +22,18 @@
 export interface PicturesViewModel {
     /**
      * 
+     * @type {number}
+     * @memberof PicturesViewModel
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PicturesViewModel
+     */
+    'drinkId': number;
+    /**
+     * 
      * @type {string}
      * @memberof PicturesViewModel
      */

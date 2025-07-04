@@ -22,6 +22,18 @@
 export interface ReviewsViewModel {
     /**
      * 
+     * @type {number}
+     * @memberof ReviewsViewModel
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReviewsViewModel
+     */
+    'drinkId': number;
+    /**
+     * 
      * @type {string}
      * @memberof ReviewsViewModel
      */

@@ -1,7 +1,11 @@
-﻿import { DataTypes } from "@sequelize/core";
+﻿import { DataTypes, NonAttribute } from "@sequelize/core";
 import { Attribute, BelongsTo, NotNull, Table } from "@sequelize/core/decorators-legacy";
 import { BaseModel } from "@/db/models/BaseModel";
 import { DrinkModel } from "@/db/models/DrinkModel";
+import { ModelInterface } from "@/types";
+
+export type IPictureModel = ModelInterface<PictureModel>;
+export type IPictureModelCreate = Omit<IPictureModel, "id">;
 
 @Table({
 	tableName: "pictures",
@@ -23,5 +27,5 @@ export class PictureModel extends BaseModel<PictureModel> {
 	@BelongsTo(() => DrinkModel, {
 		foreignKey: "drink_id",
 	})
-	declare drink: DrinkModel;
+	drink?: NonAttribute<DrinkModel>;
 }
