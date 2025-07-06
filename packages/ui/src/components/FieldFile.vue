@@ -71,7 +71,7 @@ defineExpose({
 </script>
 
 <template>
-	<article class="h-48 w-96">
+	<article class="h-36 w-72">
 		<label
 			v-if="showUpload"
 			:for="fileId"

@@ -5,6 +5,7 @@ import BaseButton from "@/components/BaseButton.vue";
 import DialogDelete from "@/components/DialogDelete.vue";
 import { IconAdd, IconDelete, IconEdit } from "@/components/Icons.ts";
 import TableData from "@/components/TableData.vue";
+import TablePagination from "@/components/TablePagination.vue";
 import { useDeleteDrink, useGetDrinks } from "@/composables/drinks.ts";
 import { useViewDrink } from "@/composables/routes.ts";
 import { useTableActions, useTableData } from "@/composables/table.ts";
@@ -13,9 +14,10 @@ import { RouteCreate } from "@/constants.ts";
 const viewDrink = useViewDrink();
 const showDelete = ref(false);
 const selectedRecord = ref<DrinksViewModel>();
-const { records } = useGetDrinks();
+const { records, search } = useGetDrinks();
 const { deleteDrink, deleting } = useDeleteDrink();
 const { table } = useTableData<DrinksViewModel>({
+	paginated: true,
 	data: records,
 	columns: [useTableActions([{
 		icon: IconEdit,
@@ -52,13 +54,20 @@ async function onDeleteDrink() {
 
 <template>
 	<article class="flex flex-col">
-		<section class="ml-auto p-2">
-			<BaseButton
-				text="Drink"
-				:icon="IconAdd"
-				theme="info"
-				@click="onClickAddDrink"
-			/>
+		<section class="ml-auto">
+			<TablePagination
+				v-model:search="search"
+				:table="table"
+			>
+				<template #after-search>
+					<BaseButton
+						text="Drink"
+						:icon="IconAdd"
+						theme="info"
+						@click="onClickAddDrink"
+					/>
+				</template>
+			</TablePagination>
 		</section>
 		<TableData :table="table" />
 		<RouterView />

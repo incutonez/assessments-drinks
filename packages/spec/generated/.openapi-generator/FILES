@@ -7,6 +7,15 @@ api/drinks-api.ts
 base.ts
 common.ts
 configuration.ts
+docs/AppApi.md
+docs/AppInfoViewModel.md
+docs/DrinksApi.md
+docs/DrinksListViewModel.md
+docs/DrinksViewModel.md
+docs/GetDrinksRequestViewModel.md
+docs/GetDrinksRequestViewModelSort.md
+docs/PicturesViewModel.md
+docs/ReviewsViewModel.md
 git_push.sh
 index.ts
 models/app-info-view-model.ts

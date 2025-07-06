@@ -1,6 +1,6 @@
 ﻿<script setup lang="ts">
 import { computed, reactive, ref, unref, watch } from "vue";
-import type { ReviewsViewModel } from "@incutonez/assessments-drinks-spec";
+import type { PicturesViewModel, ReviewsViewModel } from "@incutonez/assessments-drinks-spec";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseDialog from "@/components/BaseDialog.vue";
 import BaseTabs from "@/components/BaseTabs.vue";
@@ -10,7 +10,7 @@ import { IconAdd, IconDelete, IconEdit, IconSave } from "@/components/Icons.ts";
 import TableData from "@/components/TableData.vue";
 import type { IBaseTabProps, ViewModelIdProp } from "@/components/types.ts";
 import { provideDrinkRecord } from "@/composables/drinks.ts";
-import { useGetDrinkPictures } from "@/composables/pictures.ts";
+import { useDeletePicture, useGetDrinkPictures } from "@/composables/pictures.ts";
 import { useDeleteReview, useGetDrinkReviews } from "@/composables/reviews.ts";
 import { useViewDrink, useViewDrinks, useViewReview } from "@/composables/routes.ts";
 import { useTableActions, useTableData } from "@/composables/table.ts";
@@ -31,6 +31,7 @@ const { drinkRecord, save, saving } = provideDrinkRecord(drinkId);
 const { drinkReviews } = useGetDrinkReviews(drinkId);
 const { drinkPictures } = useGetDrinkPictures(drinkId);
 const { deleteReview } = useDeleteReview();
+const { deletePicture } = useDeletePicture();
 const viewDrinks = useViewDrinks();
 const viewReview = useViewReview();
 const tabs = reactive<IBaseTabProps[]>([{
@@ -40,7 +41,7 @@ const tabs = reactive<IBaseTabProps[]>([{
 }, {
 	title: "Pictures",
 	value: RouteDrinkTabs.Pictures,
-	contentClasses: "flex flex-col gap-2 pt-2 border-0",
+	contentClasses: "flex flex-wrap gap-4 p-4 border-0",
 }, {
 	title: "Reviews",
 	value: RouteDrinkTabs.Reviews,
@@ -97,6 +98,10 @@ function onClickAddReview() {
 	viewReview(drinkId.value as number, RouteCreate);
 }
 
+async function onClickDeleteImage(drinkPicture: PicturesViewModel) {
+	await deletePicture(drinkId.value as number, drinkPicture.id!);
+}
+
 watch(show, ($show) => {
 	if (!$show) {
 		viewDrinks();
@@ -141,12 +146,24 @@ watch(activeTab, ($activeTab) => viewDrink(drinkId.value, $activeTab));
 				</template>
 				<template #[RouteDrinkTabs.Pictures]>
 					<PictureUpload />
-					<article
+					<section
 						v-for="drinkPicture in drinkPictures"
 						:key="drinkPicture.id"
+						class="h-36 w-auto relative group"
 					>
-						Hi
-					</article>
+						<img
+							alt="Upload Image"
+							class="h-full w-auto"
+							:src="drinkPicture.path"
+						>
+						<BaseButton
+							class="absolute invisible group-hover:visible top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+							text="Delete"
+							theme="danger"
+							:icon="IconDelete"
+							@click="onClickDeleteImage(drinkPicture)"
+						/>
+					</section>
 				</template>
 				<template #[RouteDrinkTabs.Reviews]>
 					<section class="flex flex-col gap-form size-full">

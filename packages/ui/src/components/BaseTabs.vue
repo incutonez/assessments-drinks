@@ -35,6 +35,7 @@ const activeTab = defineModel<string | number>();
 		<TabsContent
 			v-for="tab in tabs"
 			:key="`content-${tab.value ?? tab.title}`"
+			as="section"
 			class="flex-1 border overflow-auto"
 			:class="tab.contentClasses"
 			:value="tab.value ?? tab.title"

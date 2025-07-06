@@ -22,6 +22,8 @@ export const QueryDrinkReviewsGET = `${QueryDrinkGET}-reviews`;
 
 export const QueryDrinkPicturesGET = `${QueryDrinkGET}-pictures`;
 
+export const UserLanguage = navigator.language;
+
 export const RouteDrinkTabs = {
 	Details: "details",
 	Pictures: "pictures",
