@@ -2,6 +2,12 @@
 
 A coding assessment where you can add, update, get, and delete drinks.  Also can add, update, get, and delete reviews and pictures for a drink.
 
+## Running App
+1. npm ci
+2. npm run api
+3. npm run ui
+4. Navigate to http://localhost:5173
+
 ## Tech Stack
 
 ### API
