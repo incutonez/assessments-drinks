@@ -15,3 +15,7 @@ export { default as IconEdit } from "@material-symbols/svg-400/outlined/edit.svg
 export { default as IconDelete } from "@material-symbols/svg-400/outlined/delete.svg";
 
 export { default as IconArrowRight } from "@material-symbols/svg-400/outlined/arrow_forward.svg";
+
+export { default as IconLeft } from "@material-symbols/svg-400/outlined/chevron_left.svg";
+
+export { default as IconRight } from "@material-symbols/svg-400/outlined/chevron_right.svg";

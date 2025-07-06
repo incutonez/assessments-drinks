@@ -17,22 +17,27 @@ export class DrinksService {
 	}
 
 	async getDrinks({ offset, limit, name, description, sort }: GetDrinksRequestViewModel): Promise<DrinksListViewModel> {
-		const where: WhereOptions<DrinkModel> = {};
+		const or: WhereOptions<DrinkModel> = {};
+		const where: WhereOptions<DrinkModel> = {
+			[Op.or]: {},
+		};
 		const order: Order = [];
 		if (name) {
-			where.name = {
+			or.name = {
 				[Op.like]: `%${name}%`,
 			};
 		}
 		if (description) {
-			where.description = {
+			or.description = {
 				[Op.like]: `%${description}%`,
 			};
 		}
 		if (sort) {
 			order.push([sort.field, sort.direction ?? "ASC"]);
 		}
-		// TODOJEF: use having for minRating/maxRating
+		if (Object.keys(or).length) {
+			where[Op.or] = or;
+		}
 		const { rows, count } = await DrinkModel.findAndCountAll({
 			offset,
 			limit,

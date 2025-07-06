@@ -22,12 +22,15 @@ export function useGetDrinks() {
 	const offset = ref(0);
 	const records = ref<DrinksViewModel[]>();
 	const count = ref<number>();
+	const search = ref<string>();
 	const query = useQuery({
-		queryKey: [QueryDrinksGET, limit, offset],
+		queryKey: [QueryDrinksGET, limit, offset, search],
 		async queryFn() {
 			const { data } = await DrinksAPI.getDrinks({
 				offset: offset.value,
 				limit: limit.value,
+				name: search.value,
+				description: search.value,
 			});
 			return data;
 		},
@@ -43,6 +46,7 @@ export function useGetDrinks() {
 	return {
 		records,
 		count,
+		search,
 	};
 }
 
