@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/incutonez/assessments-drinks/compare/v1.0.0...v1.1.0) (2025-07-06)
+
+### Features
+
+* Updating Picture UI ([#4](https://github.com/incutonez/assessments-drinks/issues/4)) ([3b84559](https://github.com/incutonez/assessments-drinks/commit/3b845592081b8797067bb2cdc5d41502b53688da))
+
 ## 1.0.0 (2025-07-04)
 
 ### Features
