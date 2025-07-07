@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/incutonez/assessments-drinks/compare/v1.1.1...v1.2.0) (2025-07-07)
+
+### Features
+
+* Update Dependencies ([#5](https://github.com/incutonez/assessments-drinks/issues/5)) ([9829204](https://github.com/incutonez/assessments-drinks/commit/98292045d36e1079fe28798e2a3e382aea150cbc))
+
 ## [1.1.1](https://github.com/incutonez/assessments-drinks/compare/v1.1.0...v1.1.1) (2025-07-06)
 
 ### Bug Fixes
