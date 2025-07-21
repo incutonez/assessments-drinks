@@ -15,12 +15,12 @@
     "typescript": "latest"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.21.0",
+    "@openapitools/openapi-generator-cli": "^2.21.3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
-    "conventional-changelog-conventionalcommits": "^9.0.0",
-    "semantic-release": "^24.2.6"
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "semantic-release": "^24.2.7"
   },
   "release": {
     "branches": [
