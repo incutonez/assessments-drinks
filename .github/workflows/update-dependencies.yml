@@ -1,7 +1,5 @@
 name: 'Update Dependencies'
 on:
-  schedule:
-    - cron: "00 14 * * 1"
   workflow_dispatch:
     inputs:
       branchName:
